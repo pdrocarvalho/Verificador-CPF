@@ -8,11 +8,11 @@ var resto2;
 var mult1;
 var mult2;
 
-const validador = {};
+const verificador = {};
 
 
 // --- FUNÇÃO MAIN ---
-validador.main = function main(btn) {
+verificador.main = function main(btn) {
     cpfArray = null;
     cpf = document.getElementById("cpfInput").value;
     cpfArray = cpf.split("");
@@ -32,12 +32,12 @@ validador.main = function main(btn) {
 
         } else {
 
-            validador.calc();
+            verificador.calc();
         }
 
 }
 
-validador.calc = function calc() {
+verificador.calc = function calc() {
     // --- EQUAÇÃO PRIMIERO DÍGITO --- 
     soma1 = 0;
     soma2 = 0;
@@ -61,14 +61,14 @@ validador.calc = function calc() {
 
     resto2 = soma2 % 11;
     soma2 = 11 - resto2;
-    validador.autent();
+    verificador.autent();
     testSoma = [soma1, soma2];
     return testSoma;
 
 
 }
 // --- FUNÇÃO PRIMEIRO DÍGITO ---
-validador.ver1 = function ver1() {
+verificador.ver1 = function ver1() {
     if (soma1 > 9 && cpfArray[9] == 0) {
         return true;
     } else {
@@ -77,7 +77,7 @@ validador.ver1 = function ver1() {
 
 }
 
-validador.ver2 = function ver2() {
+verificador.ver2 = function ver2() {
     if (soma1 == cpfArray[9]) {
         return true;
     } else {
@@ -86,7 +86,7 @@ validador.ver2 = function ver2() {
 }
 
 // --- FUNÇÃO SEGUNDO DÍGITO ---
-validador.ver3 = function ver3() {
+verificador.ver3 = function ver3() {
     if (soma2 > 9 && cpfArray[10] == 0) {
         return true;
     } else {
@@ -94,7 +94,7 @@ validador.ver3 = function ver3() {
     }
 }
 
-validador.ver4 = function ver4() {
+verificador.ver4 = function ver4() {
     if (soma2 == cpfArray[10]) {
         return true;
     } else {
@@ -102,11 +102,11 @@ validador.ver4 = function ver4() {
     }
 }
 
-validador.autent = function autent() {
+verificador.autent = function autent() {
     // --- VERIFIAÇÃO DE AUTENTICIDADE ---
-    if (validador.ver1() == true || validador.ver2() == true) {
+    if (verificador.ver1() == true || verificador.ver2() == true) {
 
-        if (validador.ver3() == true || validador.ver4() == true) {
+        if (verificador.ver3() == true || verificador.ver4() == true) {
 
             document.getElementById('verif').innerHTML = "CPF Válido!";
 
@@ -124,7 +124,7 @@ validador.autent = function autent() {
     // ---- LOGS ----
     console.log("Soma 1: <br>" + soma1);
     console.log("Soma 2: <br>" + soma2);
-    console.log(validador.ver1() + "<br>" + validador.ver2());
-    console.log(validador.ver3() + "<br>" + validador.ver4());
+    console.log(verificador.ver1() + "<br>" + verificador.ver2());
+    console.log(verificador.ver3() + "<br>" + verificador.ver4());
 }
 
